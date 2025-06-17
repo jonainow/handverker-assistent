@@ -3,6 +3,7 @@
 from beregning.areal import beregn_veggareal
 from beregning.materialmengde import beregn_antall_plater
 from beregning.materialvalg import anbefal_materiale
+from beregning.bjelke import beregn_bjelkehoyde
 
 
 
@@ -10,9 +11,9 @@ def hovedmeny():
     print("=== Håndverker Assistent ===")
     print("1. Beregn veggareal")
     print("2. Beregn antall gipsplater")
-    print("3. Avslutt")
     print("3. Anbefal materiale")
-    print("4. Avslutt")
+    print("4. Beregn bjelkehøyde")
+    print("5. Avslutt")
 
 
     valg = input("Velg et alternativ: ")
@@ -30,14 +31,21 @@ def hovedmeny():
         print(f"\nDu trenger ca. {plater} plater (inkl. 10 % ekstra).\n")
 
     elif valg == "3":
-        konstruksjon = input("Hva skal du bygge? (innervegg, yttervegg, bærende vegg, tak): ")
+        konstruksjon = input("Hva skal du bygge? (innervegg, yttervegg, bærende vegg, tak, gulv): ")
         miljø = input("Miljø (tørt, våtrom, utendørs): ")
         anbefaling = anbefal_materiale(konstruksjon, miljø)
         print(f"\n{anbefaling}\n")
 
     elif valg == "4":
-        print("Avslutter.")
+        spenn = float(input("Spennvidde i meter: "))
+        last = float(input("Jevn last i kN/m: "))
+        material = input("Materiale (tre, limtre, stål): ")
+        høyde_mm = beregn_bjelkehoyde(spenn, last, material)
+        print(f"\nAnbefalt bjelkehøyde: {høyde_mm} mm\n")
 
+    elif valg == "5":
+        print("Avslutter.")
+    
 
 
 if __name__ == "__main__":
