@@ -3,6 +3,8 @@
 from beregning.areal import beregn_veggareal
 from beregning.materialmengde import beregn_antall_plater
 from beregning.materialvalg import anbefal_materiale
+# from ai.ai_svar import spør_ai
+
 
 
 
@@ -10,9 +12,10 @@ def hovedmeny():
     print("=== Håndverker Assistent ===")
     print("1. Beregn veggareal")
     print("2. Beregn antall gipsplater")
-    print("3. Avslutt")
     print("3. Anbefal materiale")
+   # print("4. Still spørsmål til AI")
     print("4. Avslutt")
+
 
 
     valg = input("Velg et alternativ: ")
@@ -35,8 +38,18 @@ def hovedmeny():
         anbefaling = anbefal_materiale(konstruksjon, miljø)
         print(f"\n{anbefaling}\n")
 
+    # elif valg == "4":
+     #   spørsmål = input("Hva vil du spørre AI-en om? ")
+    #    try:
+    #        svar = spør_ai(spørsmål)
+     #       print(f"\nAI svarer:\n{svar}\n")
+    #    except Exception as e:
+    #        print("\nFeil ved henting av AI-svar:")
+    #        print(e)
+
     elif valg == "4":
         print("Avslutter.")
+
 
 
 
